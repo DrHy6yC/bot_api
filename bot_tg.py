@@ -5,10 +5,12 @@ import sys
 
 from create_bot import bot, dp
 from handlers.other import register_handlers_other
+from handlers.inline import register_inline_handler
 
 
 async def main() -> None:
     register_handlers_other(dp)
+    register_inline_handler(dp)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
