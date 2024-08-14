@@ -6,11 +6,13 @@ import sys
 from create_bot import bot, dp
 from handlers.other import register_handlers_other
 from handlers.inline import register_inline_handler
+from questionnaire.handler import register_questionnaire
 
 
 async def main() -> None:
-    register_handlers_other(dp)
     register_inline_handler(dp)
+    register_questionnaire(dp)
+    # register_handlers_other(dp)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
