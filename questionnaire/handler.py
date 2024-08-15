@@ -1,15 +1,9 @@
 from aiogram import types, Router, F
-from aiogram.filters import CommandStart, StateFilter
+from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
 
 from create_bot import bot
-
-
-class Form(StatesGroup):
-    one = State()
-    two = State()
-    three = State()
+from questionnaire.States import Form
 
 
 async def one_question(message: types.Message, state: FSMContext) -> None:
@@ -50,7 +44,7 @@ async def after_question(message: types.Message, state: FSMContext) -> None:
 
 
 def register_questionnaire(router: Router) -> None:
-    router.message.register(one_question, CommandStart(), StateFilter(None))
+    router.message.register(one_question, Command("questionnaire"), StateFilter(None))
     router.message.register(two_question, F.text, StateFilter(Form.one))
     router.message.register(three_question, F.text, StateFilter(Form.two))
     router.message.register(after_question, F.text, StateFilter(Form.three))

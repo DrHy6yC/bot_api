@@ -31,5 +31,5 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         print("Бот выключен")
-    except Exception as exeption:
-        print(f"Бот упал c ошибкой:\n{exeption}")
+    # except Exception as exeption:
+    #     print(f"Бот упал c ошибкой:\n{exeption}")
