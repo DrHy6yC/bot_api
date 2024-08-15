@@ -1,8 +1,8 @@
 import hashlib
 from aiogram import types, Router
 from aiogram.types import InlineQueryResultArticle, InputTextMessageContent
-from utils.translator import translate_text
-from utils.text_function import detect_en_simbol
+from translator import translate_text
+from text_function import detect_en_simbol
 
 
 async def inline_translate(inline_query: types.InlineQuery) -> None:

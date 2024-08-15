@@ -4,8 +4,8 @@ import sys
 
 
 from create_bot import bot, dp
-from handlers.other import register_handlers_other
-from handlers.inline import register_inline_handler
+from other import register_handlers_other
+from inline import register_inline_handler
 from questionnaire.handler import register_questionnaire
 
 

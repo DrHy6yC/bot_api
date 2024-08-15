@@ -12,10 +12,6 @@ async def command_start_handler(message: Message) -> None:
     await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!")
 
 
-async def no_sticker_test(message: Message) -> None:
-    await message.answer("Во время теста не спамь стикерами")
-
-
 async def echo_handler(message: Message) -> None:
     """
     Handler will forward receive a message back to the sender
@@ -30,5 +26,4 @@ async def echo_handler(message: Message) -> None:
 
 def register_handlers_other(router: Router) -> None:
     router.message.register(command_start_handler, CommandStart())
-    router.message.register(no_sticker_test, F.content_type.in_({'sticker', 'photo'}), StateFilter(Form))
     router.message.register(echo_handler)

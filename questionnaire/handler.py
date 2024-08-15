@@ -6,6 +6,10 @@ from create_bot import bot
 from questionnaire.States import Form
 
 
+async def no_sticker_test(message: types.Message) -> None:
+    await message.answer("Во время теста не спамь стикерами")
+
+
 async def one_question(message: types.Message, state: FSMContext) -> None:
     await bot.send_message(chat_id=message.chat.id, text="Это был первый вопрос")
     await state.set_state(Form.one)
@@ -44,6 +48,7 @@ async def after_question(message: types.Message, state: FSMContext) -> None:
 
 
 def register_questionnaire(router: Router) -> None:
+    router.message.register(no_sticker_test, F.content_type.in_({'sticker', 'photo'}), StateFilter(Form))
     router.message.register(one_question, Command("questionnaire"), StateFilter(None))
     router.message.register(two_question, F.text, StateFilter(Form.one))
     router.message.register(three_question, F.text, StateFilter(Form.two))

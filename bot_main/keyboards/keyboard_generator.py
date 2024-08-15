@@ -4,7 +4,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import KeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
-from callback_data.callback_data_main import DelMessageCal
+from callback_data_main import DelMessageCal
 
 
 def set_buts(text_buttons: list[str]) -> ReplyKeyboardMarkup:
