@@ -12,7 +12,7 @@ from questionnaire.handler import register_questionnaire
 async def main() -> None:
     register_inline_handler(dp)
     register_questionnaire(dp)
-    # register_handlers_other(dp)
+    register_handlers_other(dp)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
@@ -27,4 +27,9 @@ async def on_shutdown():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("Бот выключен")
+    except Exception as exeption:
+        print(f"Бот упал c ошибкой:\n{exeption}")
