@@ -3,7 +3,7 @@ from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 
 from create_bot import bot
-from questionnaire.States import Form
+from questionnaire.states.state import Form
 
 
 async def no_sticker_test(message: types.Message) -> None:

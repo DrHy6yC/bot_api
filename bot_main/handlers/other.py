@@ -1,8 +1,6 @@
-from aiogram import html, Router, F
-from aiogram.filters import CommandStart, StateFilter
+from aiogram import html, Router
+from aiogram.filters import CommandStart
 from aiogram.types import Message
-
-from States import Form
 
 
 async def command_start_handler(message: Message) -> None:
